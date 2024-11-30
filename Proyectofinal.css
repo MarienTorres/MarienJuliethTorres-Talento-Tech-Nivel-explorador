@@ -1,0 +1,257 @@
+h1{
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+
+    text-shadow: 
+    
+    0 0 5px #fff,
+    0 0 8px #fff,
+    0 0 20px #132704,
+    0 0 30px #132704,
+    0 0 40px #132704,
+    0 0 50px #132704
+    ;
+    }
+
+
+    p{
+        color: #ffffff;}
+
+    label{
+        color: #ffffff;}    
+
+body {
+    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(Imagen_ahorro\ .jpg);
+    background-image: rgb(0, 0, 0, 10%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    
+    
+    
+} 
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    background-color: #163605;
+    background-color: rgba(0, 0, 0, 40%);
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(2, 1, 1, 1);
+    transition: transform 0.3s;
+    text-align: justify;
+    
+    
+}
+
+
+section:hover {
+    transform: scale(1.02);
+}
+
+#calculadora {
+    display: flex;
+    justify-content: space-between; /* Espacia la calculadora a la izquierda y la gráfica a la derecha */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    gap: 20px; /* Espaciado entre la calculadora y la gráfica */
+  }
+  
+  #calculadora label {
+    text-align: left; /* Alinea el texto a la izquierda */
+    display: inline-block; /* Hace que el label ocupe solo el ancho necesario */
+    margin-bottom: 5px; /* Añade un pequeño margen para separar los labels de los inputs */
+  }
+
+  #calculadora input,
+#calculadora button {
+  text-align: left; /* Alinea el texto a la izquierda en los inputs y botones */
+  width: 100%; /* Los inputs y botones ocuparán todo el ancho disponible */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 20px;
+  margin: 7px 0; /* Espaciado entre los elementos */
+  box-sizing: border-box; /* Incluye el padding y border en el ancho total */
+}
+  
+  /* Estilos para el contenedor de la gráfica */
+  #graficoTorta {
+    width: 45%; /* Controla el tamaño de la gráfica, puedes ajustar este valor */
+    height: auto; /* Asegura que la altura sea proporcional */
+    align-content: center;
+    justify-content: left;
+  }
+  
+  /* Ajustes adicionales para la calculadora */
+  #calculadora div {
+    width: 100%; /* Asegura que los divs internos ocupen todo el ancho disponible */
+  }
+
+
+h2 {
+    color: #ffffff;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.menu {
+    background: #163605; /* color de fondo */
+    color: #ffffff; /* color de fuente */
+    border: 0px solid #b82e2e; /* tamaño y color de borde */
+    padding: 16px 20px;
+    border-radius: 30px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .menu:hover {
+    color: #000000; /* color de fuente hover */
+  }
+  .menu::after {
+    content: "";
+    background: #ffffff; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 100%;
+    bottom: -100%;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+  }
+  .menu:hover::after {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+  }
+
+  inputcosto{
+    text-align: center};
+
+#consumo{
+  padding: 10px;
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  color: #163605;
+}
+
+a:active{
+  color: white;
+}
+
+button{
+  text-align: left; /* Alinea el texto a la izquierda en los inputs y botones */
+  width: 100%; /* Los inputs y botones ocuparán todo el ancho disponible */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 20px;
+  margin: 7px 0; /* Espaciado entre los elementos */
+  box-sizing: border-box;
+}
+
+.slider{
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider-container{
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.slider-container img {
+  width: 100%;
+ max-width: 100%;
+}
+
+button.prev,
+button.next {
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0px 0px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button.prev {
+  left: 10px;
+}
+
+button.next {
+  right: 10px;
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

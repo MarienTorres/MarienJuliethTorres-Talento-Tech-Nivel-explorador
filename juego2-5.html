@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Ahorro de Energía</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('Imagen_ahorro\ .jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: fff;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow:
+                0 0 5px #fff,
+                0 0 8px #fff,
+                0 0 20px #132704,
+                0 0 30px #132704,
+                0 0 40px #132704,
+                0 0 50px #132704;
+        }
+
+        .apartment {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            background-image: url('apto2.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        .room {
+            position: absolute;
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: filter 0.3s, transform 0.3s;
+        }
+
+        .room img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room.off img {
+            filter: brightness(20%);
+        }
+
+        .infobox {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            width: 220px;
+            font-size: 14px;
+            color: #333;
+            z-index: 1;
+            word-break: break-word;
+        }
+
+        /* Posiciones de las habitaciones en el plano */
+        #room1 {
+            top: 130px;
+            left: 330px;
+        }
+
+        #room2 {
+            top: 170px;
+            left: 480px;
+        }
+
+        #room3 {
+            top: 80px;
+            left: 200px;
+        }
+
+        #room4 {
+            top: 10px;
+            left: 310px;
+        }
+
+        #room5 {
+            top: 50px;
+            left: 580px;
+        }
+
+        #room6 {
+            top: 280px;
+            left: 420px;
+        }
+
+        #room7 {
+            top: 320px;
+            left: 320px;
+        }
+
+        .message,
+        .status {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        #resetButton,
+        #backButton {
+            padding: 16px 20px;
+            /* Igual que el botón del menú */
+            font-size: 1rem;
+            /* Tamaño de fuente consistente */
+            background-color: #163605;
+            /* Color de fondo consistente */
+            color: #ffffff;
+            /* Color de texto */
+            border: 0;
+            /* Sin bordes */
+            border-radius: 30px;
+            /* Bordes redondeados */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            /* Animaciones suaves */
+        }
+
+        #resetButton:hover,
+        #backButton:hover {
+            background-color: #ffffff;
+            /* Cambia el fondo al pasar el mouse */
+            color: #000000;
+            /* Cambia el color del texto */
+            transform: scale(1.1);
+            /* Agranda el botón ligeramente */
+        }
+
+        #resetButton:active,
+        #backButton:active {
+            transform: scale(0.95);
+            /* Reduce el botón al hacer clic */
+        }
+
+        .mensajesalerta {
+            background-color: #163605;
+            background-color: rgba(0, 0, 0, 60%);
+            padding: 20px;
+            width: 750px;
+            color: rgb(255, 255, 255);
+            margin: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(2, 1, 1, 1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .mensajesalerta:hover {
+    transform: scale(1.02);
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Apaga las luces para ahorrar energía</h1>
+    <div class="apartment">
+        <div class="room on" id="room1" onclick="toggleLight('room1', 'Sala: Apaga las luces cuando no estés.', 0.08)">
+            <img src="gif-lamparasala.gif" alt="Sala">
+        </div>
+        <div class="room on" id="room2"
+            onclick="toggleLight('room2', 'Habitación: Evita dejar la TV encendida.', 0.12)">
+            <img src="tv-respons.gif" alt="Habitación 1">
+        </div>
+        <div class="room on" id="room3"
+            onclick="toggleLight('room3', 'Habitación: Una lámpara apagada, energía ahorrada.', 0.05)">
+            <img src="gif-lamparahabita.gif" alt="Habitación 2">
+        </div>
+        <div class="room on" id="room4"
+            onclick="toggleLight('room4', 'Baño: Solo enciende la luz cuando sea necesario.', 0.03)">
+            <img src="gif-portalampara.gif" alt="Baño 1">
+        </div>
+        <div class="room on" id="room5" onclick="toggleLight('room5', 'Baño 2: Apaga la luz para ahorrar más.', 0.03)">
+            <img src="gif-portalampara.gif" alt="Baño 2">
+        </div>
+        <div class="room on" id="room6"
+            onclick="toggleLight('room6', 'Cocina: Evita abrir la nevera sin razón.', 0.15)">
+            <img src="Neveraabierta.gif" alt="Cocina">
+        </div>
+        <div class="room on" id="room7"
+            onclick="toggleLight('room7', 'Balcón: Disfruta del día sin necesidad de luz.', 0.07)">
+            <img src="bafle.gif" alt="Balcon">
+        </div>
+        <div class="infobox" id="infobox"></div>
+    </div>
+    <div class="mensajesalerta">
+        <div class="message" id="message">Apaga todas las luces para ganar.</div>
+        <div class="status" id="status">Consumo de energía: Alto</div>
+        <div id="totalConsumption">Consumo total: 0.00 kWh</div>
+    </div>
+    <div class="button-container">
+        <button id="resetButton" onclick="resetGame()">Reiniciar Juego</button>
+        <a href="Proyectofinal.html">
+            <button id="backButton">Volver a la página principal</button>
+        </a>
+    </div>
+
+    <script>
+        const totalRooms = 7;
+        let lightsOn = totalRooms;
+        let totalConsumption = 0;
+
+        function toggleLight(roomId, tip, kWh) {
+            const room = document.getElementById(roomId);
+            const infobox = document.getElementById('infobox');
+
+            room.classList.toggle('off');
+
+            // Actualizar el consumo total y mostrar el infobox
+            if (room.classList.contains('off')) {
+                lightsOn--;
+                totalConsumption -= kWh;
+                infobox.style.display = 'block';
+                infobox.textContent = `${tip} Ahorro: ${kWh.toFixed(2)} kWh.`;
+                infobox.style.top = room.offsetTop + 90 + 'px'; // Ajuste de posición
+                infobox.style.left = room.offsetLeft + 'px';
+            } else {
+                lightsOn++;
+                totalConsumption += kWh;
+                infobox.style.display = 'none';
+            }
+
+            updateEnergyStatus();
+            updateTotalConsumption();
+            checkWinCondition();
+        }
+
+        function updateEnergyStatus() {
+            const status = document.getElementById('status');
+            let message = '';
+            let color = '';
+
+            if (lightsOn === totalRooms) {
+                message = 'Consumo de energía: Alto';
+                color = 'red';
+            } else if (lightsOn >= 5) {
+                message = 'Consumo de energía: Medio';
+                color = 'orange';
+            } else if (lightsOn >= 2) {
+                message = 'Consumo de energía: Bajo';
+                color = 'lightgreen';
+            } else {
+                message = '¡Consumo de energía mínimo!';
+                color = 'lightblue';
+            }
+
+            status.textContent = message;
+            status.style.color = color;
+        }
+
+        function updateTotalConsumption() {
+            const total = document.getElementById('totalConsumption');
+            total.textContent = `Consumo total: ${totalConsumption.toFixed(2)} kWh`;
+        }
+
+        function checkWinCondition() {
+            const message = document.getElementById('message');
+            if (lightsOn === 0) {
+                message.textContent = "¡Felicidades!Has apagado todos los electrodomésticos y ahorrado energía.";
+                message.style.color = "lightgreen";
+                message.style.fontSize = "30px";
+                message.style.justifyItems = "center";
+            } else {
+                message.textContent = "Apaga todos los electrodomésticos para ganar.";
+                message.style.color = "white";
+            }
+        }
+
+        // Función para reiniciar el juego
+        function resetGame() {
+            // Restaurar el estado inicial
+            lightsOn = totalRooms;
+            totalConsumption = 0;
+
+            // Reiniciar las luces (volver a encender todas)
+            const rooms = document.querySelectorAll('.room');
+            rooms.forEach(room => {
+                room.classList.remove('off');
+            });
+
+            // Ocultar el infobox
+            const infobox = document.getElementById('infobox');
+            infobox.style.display = 'none';
+
+            // Restablecer los textos de mensaje y consumo
+            const message = document.getElementById('message');
+            message.textContent = "Apaga todas las luces para ganar.";
+            message.style.color = "black";
+
+            updateEnergyStatus();
+            updateTotalConsumption();
+        }
+    </script>
+</body>
+
+</html>

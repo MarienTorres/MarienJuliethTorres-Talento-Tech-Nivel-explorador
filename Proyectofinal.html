@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahorra Energia</title>
+  <link rel="stylesheet" href="Proyectofinal.css" />
+  <script src="Proyectofinal.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>
+      AHORRA ENERGIA <br />
+      ¡TU HUELLA IMPORTA!
+    </h1>
+    <nav>
+      <ul>
+        <li><a class="menu" href="#Introducción">Introducción</a></li>
+        <li><a class="menu" href="#tips_ahorro">Tips ahorro</a></li>
+        <li><a class="menu" href="#calculadora">Calculadora consumo</a></li>
+        <li><a class="menu" href="#juego">Juguemos un poco</a></li>
+        <li><a class="menu" href="#masinformacion">Más información</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="Introducción">
+    <h2>Introducción</h2>
+    <p>
+      Bienvenido a nuestra página, donde creemos que pequeñas acciones pueden
+      generar grandes cambios. Nuestro objetivo es ayudarte a adoptar hábitos
+      responsables que no solo reducirán tu consumo energético, sino que
+      también contribuirán al cuidado del medio ambiente y al bienestar
+      económico de tu hogar. Además, ponemos a tu disposición una calculadora
+      de consumo energético, una herramienta sencilla y práctica con la que
+      podrás conocer cuánto consumes en tu hogar y descubrir cómo optimizarlo.
+      Aquí encontrarás consejos prácticos, información útil y soluciones
+      innovadoras para un uso más eficiente de la energía. ¡Juntos podemos
+      construir un futuro más sostenible y consciente!
+    </p>
+  </section>
+
+  <section id="tips_ahorro">
+    <h2>Tips para ahorrar energía</h2>
+    <p>A continuación, te dejamos algunos consejos para ahorrar energía:</p>
+    <div class="slider">
+      <div class="slider-container">
+        <img src="https://drive.google.com/uc?export=view&id=1vh1AGofiyenTlJPAppi0kvMviiAQMu8P" alt="Tip 1" />
+        <img src="DESENCHUFA.gif" alt="Tip 2" />
+        <img src="luz natural.gif" alt="Tip 3" />
+        <img src="DESCONGELAR.gif" alt="Tip 4" />
+      </div>
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+    
+    <br />
+    Adoptar estas prácticas en el hogar no solo te ayudará a reducir tu
+    factura de energía, sino también a contribuir al cuidado del medio
+    ambiente y a fomentar un consumo más sostenible en el país. ¡Empieza hoy y
+    marca la diferencia!
+   
+
+  </section>
+
+  <section id="calculadora" style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="flex: 1; margin-right: 20px;">
+      <h2>Calcula tu consumo de energía</h2>
+
+      <p>
+        Ingresa los datos solicitados a continuación para calcular tu gasto de
+        energía.
+      </p>
+
+      <label for="consumo">Consumo en kWh al mes:</label>
+      <input id="consumo" name="consumo" />
+      <br />
+      <label for="costo">Costo del kWh:</label>
+      <input id="costo" name="costo" step="0.01" />
+
+      <br />
+      <label for="personas">Número de personas en el hogar:</label>
+      <input type="number" id="personas" name="personas" />
+
+      <br />
+      <button type="button2" onclick="calcularGasto()" style="width: 80px; background-color: #132704; color: white;">Calcular</button>
+
+      <br />
+      <label for="total">Gasto total mes :</label>
+      <input id="total" name="total" readonly />
+    </div>
+    
+    <div style="width: 150px;"></div>
+    
+    <!-- Contenedor para la gráfica -->
+    <div style="flex: 1; max-width: 350px;">
+      <h3 style="text-align: center; font-family: Arial, sans-serif; font-size: 30px;">Distribución del gasto</h3>
+      <canvas id="graficoTorta" width="500" height="500"></canvas>
+    </div>
+  </section>
+
+  <section id="juego">
+    <h2>Juego</h2>
+    <p>
+      Con el apoyo de este juego interactivo puedes conocer la cantidad de
+      energia que consumes y puedes ahorrar en tu hogar, da clic en el botón
+      para probarlo.
+    </p>
+    <br />
+    <button type="button" onclick="location.href='juego2-5.html'" style="width: 150px; background-color: #132704; color: white; text-align: center;">
+      Click para jugar
+    </button>
+  </section>
+
+  <section id="masinformacion">
+    <h2>Más información</h2>
+    <p>
+      Si quieres conocer mas formas con las cuales puedes ahorrar energía y
+      ser parte del cambio, te invitamos a visitar las siguientes paginas:
+<br>
+<ul>
+<li>Ministerio de Energía y Recursos Naturales (México): 
+  <a href="https://www.gob.mx/sener" target="_blank" textcolor="white"> https://www.gob.mx/sener</a>
+</li>
+<li>US Department of Energy (DOE): 
+  <a href="https://www.energy.gov/" target="_blank" textcolor="white"> https://www.energy.gov/</a>
+  </li>
+<li>Greenpeace: 
+  <a href="https://www.greenpeace.org" target="_blank" textcolor="white"> https://www.greenpeace.org</a>
+</li>
+<li>Ecoembes: 
+  <a href="https://www.ecoembes.com" target="_blank" textcolor="white"> https://www.ecoembes.com</a>
+  </li>
+</ul>
+
+
+    </p>
+  </section>
+
+  <footer>
+    <img src="Logo.jpeg" alt="Logo_grupo" style="border-radius: 50%" width="150" height="150" />
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="Proyectofinal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</body>
+
+</html>
